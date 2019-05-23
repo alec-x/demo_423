@@ -13,9 +13,11 @@ namespace file_demo
 {
     public partial class Form1 : Form
     {
+        const int bufferSize = 1000;
         public Form1()
         {
             InitializeComponent();
+            contentBox.MaxLength = bufferSize;
         }
 
         private void BrowseButton_Click(object sender, EventArgs e)
@@ -34,10 +36,13 @@ namespace file_demo
 
         private void readButton_Click(object sender, EventArgs e)
         {
-            var bufferArray = new byte[1000];
+            // Fixed size buffer
+            
+            var bufferArray = new byte[bufferSize];
             FileStream fileToRead = File.Open(pathBox.Text, FileMode.Open);
-            fileToRead.Read(bufferArray, 0, 1000);
+            fileToRead.Read(bufferArray, 0, bufferSize);
             fileToRead.Close();
+
             // ToString doesn't work here
             contentBox.Text = System.Text.Encoding.Default.GetString(bufferArray);
 
@@ -45,6 +50,11 @@ namespace file_demo
 
         private void writeButton_Click(object sender, EventArgs e)
         {
+            var bufferArray = new byte[bufferSize];
+            bufferArray = System.Text.Encoding.Default.GetBytes(contentBox.Text);
+            FileStream fileToWrite = File.Open(pathBox.Text, FileMode.Create);
+            fileToWrite.Write(bufferArray, 0, bufferArray.Length);
+            fileToWrite.Close();
         }
     }
 }

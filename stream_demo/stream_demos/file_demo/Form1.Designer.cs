@@ -95,6 +95,7 @@
             this.writeButton.TabIndex = 7;
             this.writeButton.Text = "Write";
             this.writeButton.UseVisualStyleBackColor = true;
+            this.writeButton.Click += new System.EventHandler(this.writeButton_Click);
             // 
             // fileSelectDialog
             // 
