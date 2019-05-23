@@ -48,8 +48,10 @@
             this.speedPercentLabel = new System.Windows.Forms.Label();
             this.durabilityPercentLabel = new System.Windows.Forms.Label();
             this.powerPercentLabel = new System.Windows.Forms.Label();
-            this.heroPortraitBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.heroPortraitBox)).BeginInit();
+            this.heroPortraitBoxLeft = new System.Windows.Forms.PictureBox();
+            this.heroPortraitBoxRight = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.heroPortraitBoxLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.heroPortraitBoxRight)).BeginInit();
             this.SuspendLayout();
             // 
             // searchButton
@@ -232,20 +234,31 @@
             this.powerPercentLabel.Text = "/100";
             this.powerPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // heroPortraitBox
+            // heroPortraitBoxLeft
             // 
-            this.heroPortraitBox.Location = new System.Drawing.Point(16, 275);
-            this.heroPortraitBox.Name = "heroPortraitBox";
-            this.heroPortraitBox.Size = new System.Drawing.Size(350, 371);
-            this.heroPortraitBox.TabIndex = 20;
-            this.heroPortraitBox.TabStop = false;
+            this.heroPortraitBoxLeft.Location = new System.Drawing.Point(16, 275);
+            this.heroPortraitBoxLeft.Name = "heroPortraitBoxLeft";
+            this.heroPortraitBoxLeft.Size = new System.Drawing.Size(350, 371);
+            this.heroPortraitBoxLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.heroPortraitBoxLeft.TabIndex = 20;
+            this.heroPortraitBoxLeft.TabStop = false;
+            // 
+            // heroPortraitBoxRight
+            // 
+            this.heroPortraitBoxRight.Location = new System.Drawing.Point(511, 275);
+            this.heroPortraitBoxRight.Name = "heroPortraitBoxRight";
+            this.heroPortraitBoxRight.Size = new System.Drawing.Size(350, 371);
+            this.heroPortraitBoxRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.heroPortraitBoxRight.TabIndex = 21;
+            this.heroPortraitBoxRight.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 658);
-            this.Controls.Add(this.heroPortraitBox);
+            this.Controls.Add(this.heroPortraitBoxRight);
+            this.Controls.Add(this.heroPortraitBoxLeft);
             this.Controls.Add(this.powerPercentLabel);
             this.Controls.Add(this.durabilityPercentLabel);
             this.Controls.Add(this.speedPercentLabel);
@@ -269,7 +282,8 @@
             this.Font = new System.Drawing.Font("Bookman Old Style", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.heroPortraitBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.heroPortraitBoxLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.heroPortraitBoxRight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +311,8 @@
         private System.Windows.Forms.Label speedPercentLabel;
         private System.Windows.Forms.Label durabilityPercentLabel;
         private System.Windows.Forms.Label powerPercentLabel;
-        private System.Windows.Forms.PictureBox heroPortraitBox;
+        private System.Windows.Forms.PictureBox heroPortraitBoxLeft;
+        private System.Windows.Forms.PictureBox heroPortraitBoxRight;
     }
 }
 

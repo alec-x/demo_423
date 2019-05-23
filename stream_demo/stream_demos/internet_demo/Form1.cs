@@ -21,11 +21,23 @@ namespace internet_demo
         {
             InitializeComponent();
         }
-
-        private void searchButton_Click(object sender, EventArgs e)
+        
+        private void heroQuery(string heroName)
         {
-            WebRequest heroSearchRequest = WebRequest.Create("https://www.superheroapi.com/api.php/"
-                + apiKey + "/search/" + heroSearchBox.Text);
+            WebRequest heroSearchRequest;
+            if(heroName == "random")
+            {
+                Random rand = new Random();
+                string id = rand.Next(1, 730).ToString();
+                heroSearchRequest = WebRequest.Create("https://www.superheroapi.com/api.php/"
+               + apiKey + "/" + id);
+            }
+            else
+            {
+                heroSearchRequest = WebRequest.Create("https://www.superheroapi.com/api.php/"
+               + apiKey + "/search/" + heroSearchBox.Text);
+            }
+            
             HttpWebResponse heroSearchResponse = (HttpWebResponse)heroSearchRequest.GetResponse();
             Stream dataStream = heroSearchResponse.GetResponseStream();
             StreamReader streamReader = new StreamReader(dataStream);
@@ -39,40 +51,77 @@ namespace internet_demo
             {
                 // Might be a better way to do this. Dynamically create progress bars for each key found
                 // under powerstats
-                intelligenceBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["intelligence"]);
-                intelligencePercentLabel.Text = heroData.results[0]["powerstats"]["intelligence"] + "/100";
+                WebRequest heroPicRequest;
+                try
+                {
+                    if (heroName == "random")
+                    {
+                        heroSearchBox.Text = heroData.name;
 
-                strengthBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["strength"]);
-                strengthPercentLabel.Text = heroData.results[0]["powerstats"]["strength"] + " / 100";
+                        intelligenceBar.Value = Convert.ToUInt16(heroData.powerstats.intelligence);
+                        intelligencePercentLabel.Text = heroData.powerstats.intelligence + "/100";
 
-                speedBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["speed"]);
-                speedPercentLabel.Text = heroData.results[0]["powerstats"]["speed"] + " / 100";
+                        strengthBar.Value = Convert.ToUInt16(heroData.powerstats.strength);
+                        strengthPercentLabel.Text = heroData.powerstats.strength + " / 100";
 
-                durabilityBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["durability"]);
-                durabilityPercentLabel.Text = heroData.results[0]["powerstats"]["durability"] + "/100";
+                        speedBar.Value = Convert.ToUInt16(heroData.powerstats.speed);
+                        speedPercentLabel.Text = heroData.powerstats.speed + " / 100";
 
-                powerBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["power"]);
-                powerPercentLabel.Text = heroData.results[0]["powerstats"]["power"] + "/100";
+                        durabilityBar.Value = Convert.ToUInt16(heroData.powerstats.durability);
+                        durabilityPercentLabel.Text = heroData.powerstats.durability + "/100";
 
-                combatBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["combat"]);
-                combatPercentLabel.Text = heroData.results[0]["powerstats"]["combat"] + "/100";
-                
-                WebRequest heroPicRequest = WebRequest.Create(heroData.results[0]["image"]["url"]);
-                HttpWebResponse heroPicResponse = (HttpWebResponse)heroPicRequest.GetResponse();
-                WebResponse response = heroPicRequest.GetResponse();
-                Stream heroPicStream = response.GetResponseStream();
+                        powerBar.Value = Convert.ToUInt16(heroData.powerstats.power);
+                        powerPercentLabel.Text = heroData.powerstats.power + "/100";
 
-                // arbitrary buffer size, big enough to hold most images
-                var heroPicBuffer = new byte[50000];
-                heroPicStream.Read(heroPicBuffer, 0, 50000);
-                MemoryStream heroPicMemStream = new MemoryStream(heroPicBuffer);
-                heroPortraitBox.Image = Image.FromStream(heroPicMemStream);
+                        combatBar.Value = Convert.ToUInt16(heroData.powerstats.combat);
+                        combatPercentLabel.Text = heroData.powerstats.combat + "/100";
+
+                        heroPicRequest = WebRequest.Create(heroData.image.url);
+                    }
+                    else
+                    {
+                        intelligenceBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["intelligence"]);
+                        intelligencePercentLabel.Text = heroData.results[0]["powerstats"]["intelligence"] + "/100";
+
+                        strengthBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["strength"]);
+                        strengthPercentLabel.Text = heroData.results[0]["powerstats"]["strength"] + " / 100";
+
+                        speedBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["speed"]);
+                        speedPercentLabel.Text = heroData.results[0]["powerstats"]["speed"] + " / 100";
+
+                        durabilityBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["durability"]);
+                        durabilityPercentLabel.Text = heroData.results[0]["powerstats"]["durability"] + "/100";
+
+                        powerBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["power"]);
+                        powerPercentLabel.Text = heroData.results[0]["powerstats"]["power"] + "/100";
+
+                        combatBar.Value = Convert.ToUInt16(heroData.results[0]["powerstats"]["combat"]);
+                        combatPercentLabel.Text = heroData.results[0]["powerstats"]["combat"] + "/100";
+
+                        heroPicRequest = WebRequest.Create(heroData.results[0]["image"]["url"]);
+                    }
+
+                    HttpWebResponse heroPicResponse = (HttpWebResponse)heroPicRequest.GetResponse();
+                    Stream heroPicStream = heroPicResponse.GetResponseStream();
+                    Image heroPortrait = Image.FromStream(heroPicStream);
+                    heroPicStream.Close();
+                    heroPortraitBoxRight.Image = heroPortrait;
+                    heroPortraitBoxLeft.Image = heroPortrait;
+                }
+                catch
+                {
+                    System.Windows.Forms.MessageBox.Show("Query Error");
+                }
             }
             else
             {
                 System.Windows.Forms.MessageBox.Show("Error, could not find hero name");
             }
-            
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            heroQuery(heroSearchBox.Text);   
         }
     }
 }
