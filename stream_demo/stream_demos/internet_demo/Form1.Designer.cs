@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.heroSearchBox = new System.Windows.Forms.TextBox();
             this.intelligenceLabel = new System.Windows.Forms.Label();
             this.strengthLabel = new System.Windows.Forms.Label();
             this.powerLabel = new System.Windows.Forms.Label();
             this.speedLabel = new System.Windows.Forms.Label();
             this.durabilityLabel = new System.Windows.Forms.Label();
             this.combatLabel = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
-            this.progressBar5 = new System.Windows.Forms.ProgressBar();
-            this.progressBar6 = new System.Windows.Forms.ProgressBar();
+            this.intelligenceBar = new System.Windows.Forms.ProgressBar();
+            this.powerBar = new System.Windows.Forms.ProgressBar();
+            this.speedBar = new System.Windows.Forms.ProgressBar();
+            this.durabilityBar = new System.Windows.Forms.ProgressBar();
+            this.strengthBar = new System.Windows.Forms.ProgressBar();
+            this.combatBar = new System.Windows.Forms.ProgressBar();
             this.intelligencePercentLabel = new System.Windows.Forms.Label();
             this.combatPercentLabel = new System.Windows.Forms.Label();
             this.strengthPercentLabel = new System.Windows.Forms.Label();
@@ -59,17 +59,18 @@
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(168, 40);
             this.searchButton.TabIndex = 0;
-            this.searchButton.Text = "Character Search";
+            this.searchButton.Text = "&Character Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox1
+            // heroSearchBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(13, 21);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(672, 25);
-            this.textBox1.TabIndex = 1;
+            this.heroSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.heroSearchBox.Location = new System.Drawing.Point(13, 21);
+            this.heroSearchBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heroSearchBox.Name = "heroSearchBox";
+            this.heroSearchBox.Size = new System.Drawing.Size(672, 25);
+            this.heroSearchBox.TabIndex = 1;
             // 
             // intelligenceLabel
             // 
@@ -125,47 +126,51 @@
             this.combatLabel.TabIndex = 7;
             this.combatLabel.Text = "Combat";
             // 
-            // progressBar1
+            // intelligenceBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(116, 57);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(569, 23);
-            this.progressBar1.TabIndex = 8;
+            this.intelligenceBar.BackColor = System.Drawing.SystemColors.Control;
+            this.intelligenceBar.Location = new System.Drawing.Point(116, 57);
+            this.intelligenceBar.MarqueeAnimationSpeed = 1000;
+            this.intelligenceBar.Name = "intelligenceBar";
+            this.intelligenceBar.Size = new System.Drawing.Size(569, 23);
+            this.intelligenceBar.TabIndex = 8;
             // 
-            // progressBar2
+            // powerBar
             // 
-            this.progressBar2.Location = new System.Drawing.Point(116, 201);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(569, 23);
-            this.progressBar2.TabIndex = 9;
+            this.powerBar.Location = new System.Drawing.Point(116, 201);
+            this.powerBar.Name = "powerBar";
+            this.powerBar.Size = new System.Drawing.Size(569, 23);
+            this.powerBar.TabIndex = 9;
             // 
-            // progressBar3
+            // speedBar
             // 
-            this.progressBar3.Location = new System.Drawing.Point(116, 129);
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(569, 23);
-            this.progressBar3.TabIndex = 10;
+            this.speedBar.Location = new System.Drawing.Point(116, 129);
+            this.speedBar.Name = "speedBar";
+            this.speedBar.Size = new System.Drawing.Size(569, 23);
+            this.speedBar.TabIndex = 10;
             // 
-            // progressBar4
+            // durabilityBar
             // 
-            this.progressBar4.Location = new System.Drawing.Point(116, 165);
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(569, 23);
-            this.progressBar4.TabIndex = 11;
+            this.durabilityBar.Location = new System.Drawing.Point(116, 165);
+            this.durabilityBar.Name = "durabilityBar";
+            this.durabilityBar.Size = new System.Drawing.Size(569, 23);
+            this.durabilityBar.TabIndex = 11;
             // 
-            // progressBar5
+            // strengthBar
             // 
-            this.progressBar5.Location = new System.Drawing.Point(116, 93);
-            this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(569, 23);
-            this.progressBar5.TabIndex = 12;
+            this.strengthBar.BackColor = System.Drawing.SystemColors.Control;
+            this.strengthBar.Location = new System.Drawing.Point(116, 93);
+            this.strengthBar.MarqueeAnimationSpeed = 1000;
+            this.strengthBar.Name = "strengthBar";
+            this.strengthBar.Size = new System.Drawing.Size(569, 23);
+            this.strengthBar.TabIndex = 12;
             // 
-            // progressBar6
+            // combatBar
             // 
-            this.progressBar6.Location = new System.Drawing.Point(116, 237);
-            this.progressBar6.Name = "progressBar6";
-            this.progressBar6.Size = new System.Drawing.Size(569, 23);
-            this.progressBar6.TabIndex = 13;
+            this.combatBar.Location = new System.Drawing.Point(116, 237);
+            this.combatBar.Name = "combatBar";
+            this.combatBar.Size = new System.Drawing.Size(569, 23);
+            this.combatBar.TabIndex = 13;
             // 
             // intelligencePercentLabel
             // 
@@ -247,19 +252,19 @@
             this.Controls.Add(this.strengthPercentLabel);
             this.Controls.Add(this.combatPercentLabel);
             this.Controls.Add(this.intelligencePercentLabel);
-            this.Controls.Add(this.progressBar6);
-            this.Controls.Add(this.progressBar5);
-            this.Controls.Add(this.progressBar4);
-            this.Controls.Add(this.progressBar3);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.combatBar);
+            this.Controls.Add(this.strengthBar);
+            this.Controls.Add(this.durabilityBar);
+            this.Controls.Add(this.speedBar);
+            this.Controls.Add(this.powerBar);
+            this.Controls.Add(this.intelligenceBar);
             this.Controls.Add(this.combatLabel);
             this.Controls.Add(this.durabilityLabel);
             this.Controls.Add(this.speedLabel);
             this.Controls.Add(this.powerLabel);
             this.Controls.Add(this.strengthLabel);
             this.Controls.Add(this.intelligenceLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.heroSearchBox);
             this.Controls.Add(this.searchButton);
             this.Font = new System.Drawing.Font("Bookman Old Style", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
@@ -273,19 +278,19 @@
         #endregion
 
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox heroSearchBox;
         private System.Windows.Forms.Label intelligenceLabel;
         private System.Windows.Forms.Label strengthLabel;
         private System.Windows.Forms.Label powerLabel;
         private System.Windows.Forms.Label speedLabel;
         private System.Windows.Forms.Label durabilityLabel;
         private System.Windows.Forms.Label combatLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.ProgressBar progressBar3;
-        private System.Windows.Forms.ProgressBar progressBar4;
-        private System.Windows.Forms.ProgressBar progressBar5;
-        private System.Windows.Forms.ProgressBar progressBar6;
+        private System.Windows.Forms.ProgressBar intelligenceBar;
+        private System.Windows.Forms.ProgressBar powerBar;
+        private System.Windows.Forms.ProgressBar speedBar;
+        private System.Windows.Forms.ProgressBar durabilityBar;
+        private System.Windows.Forms.ProgressBar strengthBar;
+        private System.Windows.Forms.ProgressBar combatBar;
         private System.Windows.Forms.Label intelligencePercentLabel;
         private System.Windows.Forms.Label combatPercentLabel;
         private System.Windows.Forms.Label strengthPercentLabel;
