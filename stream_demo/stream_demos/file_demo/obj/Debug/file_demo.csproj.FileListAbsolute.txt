@@ -7,3 +7,13 @@ C:\Repos\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.csproj.GenerateR
 C:\Repos\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.csproj.CoreCompileInputs.cache
 C:\Repos\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.exe
 C:\Repos\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.pdb
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\bin\Debug\file_demo.exe.config
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\bin\Debug\file_demo.exe
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\bin\Debug\file_demo.pdb
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.csprojAssemblyReference.cache
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.Form1.resources
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.Properties.Resources.resources
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.csproj.GenerateResource.cache
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.csproj.CoreCompileInputs.cache
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.exe
+C:\Repos\grad_school\stream_demo\stream_demos\file_demo\obj\Debug\file_demo.pdb
