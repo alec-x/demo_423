@@ -1,0 +1,10 @@
+C:\Repos\stream_demo\stream_demos\internet_demo\bin\Debug\internet_demo.exe.config
+C:\Repos\stream_demo\stream_demos\internet_demo\bin\Debug\internet_demo.exe
+C:\Repos\stream_demo\stream_demos\internet_demo\bin\Debug\internet_demo.pdb
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.csprojAssemblyReference.cache
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.Form1.resources
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.Properties.Resources.resources
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.csproj.GenerateResource.cache
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.csproj.CoreCompileInputs.cache
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.exe
+C:\Repos\stream_demo\stream_demos\internet_demo\obj\Debug\internet_demo.pdb

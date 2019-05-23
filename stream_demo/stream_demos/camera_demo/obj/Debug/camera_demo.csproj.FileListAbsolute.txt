@@ -1,0 +1,9 @@
+C:\Repos\stream_demo\stream_demos\camera_demo\bin\Debug\camera_demo.exe.config
+C:\Repos\stream_demo\stream_demos\camera_demo\bin\Debug\camera_demo.exe
+C:\Repos\stream_demo\stream_demos\camera_demo\bin\Debug\camera_demo.pdb
+C:\Repos\stream_demo\stream_demos\camera_demo\obj\Debug\camera_demo.csprojAssemblyReference.cache
+C:\Repos\stream_demo\stream_demos\camera_demo\obj\Debug\camera_demo.Properties.Resources.resources
+C:\Repos\stream_demo\stream_demos\camera_demo\obj\Debug\camera_demo.csproj.GenerateResource.cache
+C:\Repos\stream_demo\stream_demos\camera_demo\obj\Debug\camera_demo.csproj.CoreCompileInputs.cache
+C:\Repos\stream_demo\stream_demos\camera_demo\obj\Debug\camera_demo.exe
+C:\Repos\stream_demo\stream_demos\camera_demo\obj\Debug\camera_demo.pdb
