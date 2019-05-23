@@ -12,6 +12,8 @@ namespace internet_demo
 {
     public partial class Form1 : Form
     {
+        const string apiKey = "1330434550430692";
+
         public Form1()
         {
             InitializeComponent();
