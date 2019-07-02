@@ -51,7 +51,7 @@ namespace camera_demo
         {
             Bitmap newFrame = args.Frame;
             string prefix = Environment.CurrentDirectory;
-            string name = prefix + @"\output\" + "lol" + count + ".bmp";
+            string name = prefix + @"\output\" + "capture" + count + ".bmp";
             newFrame.Save(name, System.Drawing.Imaging.ImageFormat.Bmp);
             count++;
             
