@@ -3,3 +3,5 @@
 *.ide-wal
 *.ide-shm
 *.ide
+*.suo
+*.user
