@@ -29,8 +29,10 @@ namespace camera_demo
         {
             InitializeComponent();
             InitializeVideoDevice();
-            Directory.CreateDirectory(Environment.CurrentDirectory + @"\output");
             stopwatchTimer = new Stopwatch();
+            string outputDir = Environment.CurrentDirectory + @"\output";
+            EmptyDirectory(outputDir);
+            Directory.CreateDirectory(outputDir);
         }
 
         public void InitializeVideoDevice()
@@ -66,6 +68,27 @@ namespace camera_demo
             ElapsedTimeBox.Text = (count * 1000 / stopwatchTimer.ElapsedMilliseconds).ToString();
             stopwatchTimer.Reset();
             count = 0;
+        private static void EmptyDirectory(string dir)
+        {
+            try
+            {
+                System.IO.DirectoryInfo directory = new System.IO.DirectoryInfo(dir);
+                foreach (System.IO.FileInfo file in directory.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+
+                foreach (System.IO.DirectoryInfo subDirectory in directory.EnumerateDirectories())
+                {
+                    subDirectory.Delete(true);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error, either invalid directory path or permissions issue");
+            }
+            return;
+        }
         }
     }
 }
