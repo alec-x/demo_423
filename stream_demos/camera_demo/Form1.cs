@@ -54,8 +54,17 @@ namespace camera_demo
             string name = prefix + @"\output\" + "capture" + count + ".bmp";
             newFrame.Save(name, System.Drawing.Imaging.ImageFormat.Bmp);
             count++;
-            
-            PreviewBox.Image = Image.FromFile(name);
+
+            // we have to use the using statement, so that our bitmap file is not locked
+            // for deletion in case we would like to stop/start recording again
+            // the using statement automatically disposes of the object once we've used it
+            Image img;
+            using (var bmpTemp = new Bitmap(name))
+            {
+                img = new Bitmap(bmpTemp);
+            }
+
+            PreviewBox.Image = img;
             averageFPSCount++;
 
             return;
