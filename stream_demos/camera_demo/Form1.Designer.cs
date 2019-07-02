@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.StartButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
+            this.ElapsedTimeBox = new System.Windows.Forms.TextBox();
+            this.ElapsedTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,11 +64,29 @@
             this.StopButton.UseVisualStyleBackColor = true;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
+            // ElapsedTimeBox
+            // 
+            this.ElapsedTimeBox.Location = new System.Drawing.Point(655, 38);
+            this.ElapsedTimeBox.Name = "ElapsedTimeBox";
+            this.ElapsedTimeBox.Size = new System.Drawing.Size(100, 20);
+            this.ElapsedTimeBox.TabIndex = 3;
+            // 
+            // ElapsedTimeLabel
+            // 
+            this.ElapsedTimeLabel.AutoSize = true;
+            this.ElapsedTimeLabel.Location = new System.Drawing.Point(652, 22);
+            this.ElapsedTimeLabel.Name = "ElapsedTimeLabel";
+            this.ElapsedTimeLabel.Size = new System.Drawing.Size(60, 13);
+            this.ElapsedTimeLabel.TabIndex = 4;
+            this.ElapsedTimeLabel.Text = "frames/sec";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ElapsedTimeLabel);
+            this.Controls.Add(this.ElapsedTimeBox);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.PreviewBox);
@@ -76,15 +94,16 @@
             this.Text = "Video Stream Demo";
             ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.PictureBox PreviewBox;
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.TextBox ElapsedTimeBox;
+        private System.Windows.Forms.Label ElapsedTimeLabel;
     }
 }
 

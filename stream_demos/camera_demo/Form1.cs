@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Accord.Video.DirectShow;
 using Accord.Video;
 using System.IO;
-
+using System.Diagnostics;
 namespace camera_demo
 {
     public partial class Form1 : Form
@@ -21,12 +21,16 @@ namespace camera_demo
         // selected video device
         private VideoCaptureDevice videoDevice;
 
-        // TODO: Remove this test var
+        // TODO: Remove test vars
         private Int64 count = 0;
+        private Int64 timer = 0;
+        private Stopwatch stopwatchTimer;
         public Form1()
         {
             InitializeComponent();
             InitializeVideoDevice();
+            Directory.CreateDirectory(Environment.CurrentDirectory + @"\output");
+            stopwatchTimer = new Stopwatch();
         }
 
         public void InitializeVideoDevice()
@@ -52,11 +56,16 @@ namespace camera_demo
         private void StartButton_Click(object sender, EventArgs e)
         {
             videoDevice.Start();
+            stopwatchTimer.Start();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
             videoDevice.Stop();
+            stopwatchTimer.Stop();
+            ElapsedTimeBox.Text = (count * 1000 / stopwatchTimer.ElapsedMilliseconds).ToString();
+            stopwatchTimer.Reset();
+            count = 0;
         }
     }
 }
