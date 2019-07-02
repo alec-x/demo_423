@@ -23,16 +23,19 @@ namespace camera_demo
 
         // TODO: Remove test vars
         private Int64 count = 0;
-        private Int64 timer = 0;
-        private Stopwatch stopwatchTimer;
-        public Form1()
+        private Int64 averageFPSCount = 0;
+        private Stopwatch elapsedTimeWatch;
+        private Stopwatch fpsWatch;
+        public CameraDemoForm()
         {
             InitializeComponent();
             InitializeVideoDevice();
-            stopwatchTimer = new Stopwatch();
             string outputDir = Environment.CurrentDirectory + @"\output";
             EmptyDirectory(outputDir);
             Directory.CreateDirectory(outputDir);
+            elapsedTimeWatch = new Stopwatch();
+            fpsWatch = new Stopwatch();
+            
         }
 
         public void InitializeVideoDevice()
@@ -50,24 +53,34 @@ namespace camera_demo
             string name = prefix + @"\output\" + "lol" + count + ".bmp";
             newFrame.Save(name, System.Drawing.Imaging.ImageFormat.Bmp);
             count++;
-                
-            //PreviewBox.Image = newFrame;
+            
+            PreviewBox.Image = Image.FromFile(name);
+            averageFPSCount++;
+
             return;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
             videoDevice.Start();
-            stopwatchTimer.Start();
+            elapsedTimeWatch.Start();
+            fpsWatch.Start();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
             videoDevice.Stop();
-            stopwatchTimer.Stop();
-            ElapsedTimeBox.Text = (count * 1000 / stopwatchTimer.ElapsedMilliseconds).ToString();
-            stopwatchTimer.Reset();
+
+            elapsedTimeWatch.Stop();
+            elapsedTimeWatch.Reset();
+
+            fpsWatch.Stop();
+            fpsWatch.Reset();
+            
             count = 0;
+            averageFPSCount = 0;
+        }
+
         private static void EmptyDirectory(string dir)
         {
             try
@@ -89,6 +102,19 @@ namespace camera_demo
             }
             return;
         }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            // update FPS
+            if (fpsWatch.ElapsedMilliseconds >= 1000)
+            {
+                FPSBox.Text = (averageFPSCount * 1000 / fpsWatch.ElapsedMilliseconds).ToString();
+                fpsWatch.Restart();
+                averageFPSCount = 0;
+            }
+
+            // update elapsed time
+            ElapsedTimeBox.Text = elapsedTimeWatch.ElapsedMilliseconds.ToString();
         }
     }
 }
