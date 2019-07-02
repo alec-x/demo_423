@@ -63,15 +63,18 @@ namespace camera_demo
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+            EmptyDirectory(outputDir);
             videoDevice.Start();
             elapsedTimeWatch.Start();
             fpsWatch.Start();
+            timer1.Enabled = true;
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             videoDevice.Stop();
-
+            
             elapsedTimeWatch.Stop();
             elapsedTimeWatch.Reset();
 
