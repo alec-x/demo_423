@@ -20,7 +20,8 @@ namespace camera_demo
         private FilterInfoCollection videoDevices;
         // selected video device
         private VideoCaptureDevice videoDevice;
-
+        // Output directory
+        private string outputDir = Environment.CurrentDirectory + @"\output";
         // TODO: Remove test vars
         private Int64 count = 0;
         private Int64 averageFPSCount = 0;
@@ -30,7 +31,7 @@ namespace camera_demo
         {
             InitializeComponent();
             InitializeVideoDevice();
-            string outputDir = Environment.CurrentDirectory + @"\output";
+            
             EmptyDirectory(outputDir);
             Directory.CreateDirectory(outputDir);
             elapsedTimeWatch = new Stopwatch();
