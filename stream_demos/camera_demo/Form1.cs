@@ -106,7 +106,7 @@ namespace camera_demo
         private void Timer1_Tick(object sender, EventArgs e)
         {
             // update FPS
-            if (fpsWatch.ElapsedMilliseconds >= 1000)
+            if (fpsWatch.ElapsedMilliseconds >= 500)
             {
                 FPSBox.Text = (averageFPSCount * 1000 / fpsWatch.ElapsedMilliseconds).ToString();
                 fpsWatch.Restart();
