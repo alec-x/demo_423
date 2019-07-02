@@ -1,6 +1,6 @@
 ﻿namespace camera_demo
 {
-    partial class Form1
+    partial class CameraDemoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.PreviewBox);
-            this.Name = "Form1";
+            this.Name = "CameraDemoForm";
             this.Text = "Video Stream Demo";
             ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).EndInit();
             this.ResumeLayout(false);

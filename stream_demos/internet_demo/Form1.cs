@@ -13,11 +13,11 @@ using Json;
 
 namespace internet_demo
 {
-    public partial class Form1 : Form
+    public partial class InternetDemoForm : Form
     {
         const string apiKey = "1330434550430692";
         string jsonReceived;
-        public Form1()
+        public InternetDemoForm()
         {
             InitializeComponent();
         }

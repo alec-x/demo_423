@@ -1,6 +1,6 @@
 ﻿namespace internet_demo
 {
-    partial class Form1
+    partial class InternetDemoForm
     {
         /// <summary>
         /// Required designer variable.

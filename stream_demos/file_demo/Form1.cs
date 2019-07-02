@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace file_demo
 {
-    public partial class Form1 : Form
+    public partial class FileDemoForm : Form
     {
         const int bufferSize = 1000;
-        public Form1()
+        public FileDemoForm()
         {
             InitializeComponent();
             contentBox.MaxLength = bufferSize;

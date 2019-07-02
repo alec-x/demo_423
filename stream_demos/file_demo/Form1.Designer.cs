@@ -1,6 +1,6 @@
 ﻿namespace file_demo
 {
-    partial class Form1
+    partial class FileDemoForm
     {
         /// <summary>
         /// Required designer variable.

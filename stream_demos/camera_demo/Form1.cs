@@ -13,7 +13,7 @@ using System.IO;
 using System.Diagnostics;
 namespace camera_demo
 {
-    public partial class Form1 : Form
+    public partial class CameraDemoForm : Form
     {
 
         // collection of available video devices
