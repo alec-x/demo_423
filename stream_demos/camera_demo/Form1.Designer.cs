@@ -45,7 +45,7 @@
             // 
             // PreviewBox
             // 
-            this.PreviewBox.Location = new System.Drawing.Point(13, 14);
+            this.PreviewBox.Location = new System.Drawing.Point(11, 14);
             this.PreviewBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PreviewBox.Name = "PreviewBox";
             this.PreviewBox.Size = new System.Drawing.Size(624, 394);
@@ -54,8 +54,9 @@
             // 
             // StartButton
             // 
+            this.StartButton.Enabled = false;
             this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartButton.Location = new System.Drawing.Point(13, 418);
+            this.StartButton.Location = new System.Drawing.Point(11, 433);
             this.StartButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(210, 89);
@@ -66,8 +67,9 @@
             // 
             // StopButton
             // 
+            this.StopButton.Enabled = false;
             this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StopButton.Location = new System.Drawing.Point(231, 418);
+            this.StopButton.Location = new System.Drawing.Point(229, 433);
             this.StopButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(195, 89);
@@ -81,7 +83,7 @@
             this.ElapsedTimeBox.Location = new System.Drawing.Point(645, 37);
             this.ElapsedTimeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ElapsedTimeBox.Name = "ElapsedTimeBox";
-            this.ElapsedTimeBox.Size = new System.Drawing.Size(148, 26);
+            this.ElapsedTimeBox.Size = new System.Drawing.Size(212, 26);
             this.ElapsedTimeBox.TabIndex = 3;
             // 
             // ElapsedTimeLabel
@@ -109,7 +111,7 @@
             this.FPSBox.Location = new System.Drawing.Point(645, 128);
             this.FPSBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FPSBox.Name = "FPSBox";
-            this.FPSBox.Size = new System.Drawing.Size(148, 26);
+            this.FPSBox.Size = new System.Drawing.Size(212, 26);
             this.FPSBox.TabIndex = 5;
             // 
             // timer1
@@ -119,7 +121,7 @@
             // SelectLabel
             // 
             this.SelectLabel.AutoSize = true;
-            this.SelectLabel.Location = new System.Drawing.Point(641, 263);
+            this.SelectLabel.Location = new System.Drawing.Point(642, 434);
             this.SelectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SelectLabel.Name = "SelectLabel";
             this.SelectLabel.Size = new System.Drawing.Size(57, 20);
@@ -128,11 +130,11 @@
             // 
             // SelectButton
             // 
-            this.SelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectButton.Location = new System.Drawing.Point(645, 323);
+            this.SelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectButton.Location = new System.Drawing.Point(781, 489);
             this.SelectButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(148, 43);
+            this.SelectButton.Size = new System.Drawing.Size(74, 33);
             this.SelectButton.TabIndex = 9;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = true;
@@ -140,10 +142,11 @@
             // 
             // SelectCombo
             // 
+            this.SelectCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectCombo.FormattingEnabled = true;
-            this.SelectCombo.Location = new System.Drawing.Point(645, 287);
+            this.SelectCombo.Location = new System.Drawing.Point(646, 458);
             this.SelectCombo.Name = "SelectCombo";
-            this.SelectCombo.Size = new System.Drawing.Size(147, 28);
+            this.SelectCombo.Size = new System.Drawing.Size(211, 23);
             this.SelectCombo.TabIndex = 10;
             this.SelectCombo.Click += new System.EventHandler(this.SelectCombo_Click);
             // 
@@ -151,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 519);
+            this.ClientSize = new System.Drawing.Size(868, 553);
             this.Controls.Add(this.SelectCombo);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.SelectLabel);

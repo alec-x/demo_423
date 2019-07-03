@@ -10,13 +10,13 @@ namespace camera_demo
     public partial class CameraDemoForm : Form
     {
 
-        // collection of available video devices
+        // Collection of available video devices
         private FilterInfoCollection videoDevices;
-        // selected video device
+        // Selected video device
         private VideoCaptureDevice videoDevice;
         // Output directory
         private string outputDir = Environment.CurrentDirectory + @"\output";
-        // TODO: Remove test vars
+        // Timekeeping vars, stopwatch is more accurate than timer
         private Int64 count = 0;
         private Int64 averageFPSCount = 0;
         private Stopwatch elapsedTimeWatch;
@@ -75,14 +75,22 @@ namespace camera_demo
             // videoDevice = new VideoCaptureDevice(videoDevices.Find(x => x.Name.Contains("Logitech")).MonikerString);
             try
             {
+                // Using lambda function, find device in videodevices matching name of selected combobox item and extract moniker
                 string deviceMoniker = videoDevices.Find(x => x.Name.Contains(SelectCombo.SelectedItem.ToString())).MonikerString;
                 videoDevice = new VideoCaptureDevice(deviceMoniker);
+
+                // associate new frame event with event handler defined in utilities section
                 videoDevice.NewFrame += new NewFrameEventHandler(FrameHandler);
             }
             catch
             {
                 MessageBox.Show("Error, device cannot be selected");
+                StartButton.Enabled = false;
+                StopButton.Enabled = false;
             }
+
+            StartButton.Enabled = true;
+            StopButton.Enabled = true;
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
