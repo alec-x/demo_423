@@ -23,45 +23,14 @@ namespace camera_demo
         private Stopwatch fpsWatch;
         public CameraDemoForm()
         {
-            InitializeComponent();
-            InitializeVideoDevice();
+            InitializeComponent();   
             
             EmptyDirectory(outputDir);
             Directory.CreateDirectory(outputDir);
+
             elapsedTimeWatch = new Stopwatch();
             fpsWatch = new Stopwatch();
             
-        }
-
-        public void InitializeVideoDevice()
-        {
-            // Find first valid video input device (ie. webcam) and assign as videodevice
-            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            videoDevice = new VideoCaptureDevice(videoDevices[1].MonikerString);
-            videoDevice.NewFrame += new NewFrameEventHandler(FrameHandler);
-        }
-
-        private void FrameHandler(object sender, NewFrameEventArgs args)
-        {
-            Bitmap newFrame = args.Frame;
-            string prefix = Environment.CurrentDirectory;
-            string name = prefix + @"\output\" + "capture" + count + ".bmp";
-            newFrame.Save(name, System.Drawing.Imaging.ImageFormat.Bmp);
-            count++;
-
-            // we have to use the using statement, so that our bitmap file is not locked
-            // for deletion in case we would like to stop/start recording again
-            // the using statement automatically disposes of the object once we've used it
-            Image img;
-            using (var bmpTemp = new Bitmap(name))
-            {
-                img = new Bitmap(bmpTemp);
-            }
-
-            PreviewBox.Image = img;
-            averageFPSCount++;
-
-            return;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -88,6 +57,72 @@ namespace camera_demo
             averageFPSCount = 0;
         }
 
+        private void SelectCombo_Click(object sender, EventArgs e)
+        {
+            // Find first valid video input device (ie. webcam) and assign as videodevice
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+            SelectCombo.Items.Clear();
+            foreach (var item in videoDevices)
+            {
+                SelectCombo.Items.Add(item.Name);
+            }
+        }
+
+        private void SelectButton_Click(object sender, EventArgs e)
+        {
+            // Find "Logitech" cameras
+            // videoDevice = new VideoCaptureDevice(videoDevices.Find(x => x.Name.Contains("Logitech")).MonikerString);
+            try
+            {
+                string deviceMoniker = videoDevices.Find(x => x.Name.Contains(SelectCombo.SelectedItem.ToString())).MonikerString;
+                videoDevice = new VideoCaptureDevice(deviceMoniker);
+                videoDevice.NewFrame += new NewFrameEventHandler(FrameHandler);
+            }
+            catch
+            {
+                MessageBox.Show("Error, device cannot be selected");
+            }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            // update FPS
+            if (fpsWatch.ElapsedMilliseconds >= 500)
+            {
+                FPSBox.Text = (averageFPSCount * 1000 / fpsWatch.ElapsedMilliseconds).ToString();
+                fpsWatch.Restart();
+                averageFPSCount = 0;
+            }
+
+            // update elapsed time
+            ElapsedTimeBox.Text = elapsedTimeWatch.ElapsedMilliseconds.ToString();
+        }
+
+        #region Utility
+        private void FrameHandler(object sender, NewFrameEventArgs args)
+        {
+            Bitmap newFrame = args.Frame;
+            string prefix = Environment.CurrentDirectory;
+            string name = prefix + @"\output\" + "capture" + count + ".bmp";
+            newFrame.Save(name, System.Drawing.Imaging.ImageFormat.Bmp);
+            count++;
+
+            // we have to use the using statement, so that our bitmap file is not locked
+            // for deletion in case we would like to stop/start recording again
+            // the using statement automatically disposes of the object once we've used it
+            Image img;
+            using (var bmpTemp = new Bitmap(name))
+            {
+                img = new Bitmap(bmpTemp);
+            }
+
+            PreviewBox.Image = img;
+            averageFPSCount++;
+
+            return;
+        }
+
         private static void EmptyDirectory(string dir)
         {
             try
@@ -110,18 +145,6 @@ namespace camera_demo
             return;
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            // update FPS
-            if (fpsWatch.ElapsedMilliseconds >= 500)
-            {
-                FPSBox.Text = (averageFPSCount * 1000 / fpsWatch.ElapsedMilliseconds).ToString();
-                fpsWatch.Restart();
-                averageFPSCount = 0;
-            }
-
-            // update elapsed time
-            ElapsedTimeBox.Text = elapsedTimeWatch.ElapsedMilliseconds.ToString();
-        }
+        #endregion
     }
 }
