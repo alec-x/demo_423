@@ -8,3 +8,4 @@
 *.bmp
 bin/
 obj/	
+stream_demos/camera_demo/obj/
