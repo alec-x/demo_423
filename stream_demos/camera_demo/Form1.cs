@@ -16,6 +16,7 @@ namespace camera_demo
         private VideoCaptureDevice videoDevice;
         // Output directory
         private string outputDir = Environment.CurrentDirectory + @"\output";
+        
         // Timekeeping vars, stopwatch is more accurate than timer
         private Int64 count = 0;
         private Int64 averageFPSCount = 0;
@@ -110,23 +111,15 @@ namespace camera_demo
         #region Utility
         private void FrameHandler(object sender, NewFrameEventArgs args)
         {
-            Bitmap newFrame = args.Frame;
-            string prefix = Environment.CurrentDirectory;
-            string name = prefix + @"\output\" + "capture" + count + ".bmp";
+            // Be careful about using ref vs value of args.Frame, depending
+            // on how this is done, program may hog access rights to object
+            Bitmap newFrame = new Bitmap(args.Frame);
+            string name = outputDir + "capture" + count + ".bmp";
             newFrame.Save(name, System.Drawing.Imaging.ImageFormat.Bmp);
-            count++;
-
-            // we have to use the using statement, so that our bitmap file is not locked
-            // for deletion in case we would like to stop/start recording again
-            // the using statement automatically disposes of the object once we've used it
-            Image img;
-            using (var bmpTemp = new Bitmap(name))
-            {
-                img = new Bitmap(bmpTemp);
-            }
-
-            PreviewBox.Image = img;
+            
+            PreviewBox.Image = newFrame;
             averageFPSCount++;
+            count++;
 
             return;
         }
