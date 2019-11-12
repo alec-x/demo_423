@@ -15,7 +15,7 @@ namespace camera_demo
         // Selected video device
         private VideoCaptureDevice videoDevice;
         // Output directory
-        private string outputDir = Environment.CurrentDirectory + @"\output";
+        private string outputDir = Environment.CurrentDirectory + @"\output\";
         
         // Timekeeping vars, stopwatch is more accurate than timer
         private Int64 count = 0;
