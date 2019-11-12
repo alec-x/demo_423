@@ -9,3 +9,5 @@
 bin/
 obj/	
 stream_demos/camera_demo/obj/
+stream_demos/file_demo/obj/
+stream_demos/internet_demo/obj/
