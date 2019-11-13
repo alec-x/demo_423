@@ -5,6 +5,7 @@ using Accord.Video.DirectShow;
 using Accord.Video;
 using System.IO;
 using System.Diagnostics;
+
 namespace camera_demo
 {
     public partial class CameraDemoForm : Form
@@ -24,9 +25,17 @@ namespace camera_demo
         private Stopwatch fpsWatch;
         public CameraDemoForm()
         {
-            InitializeComponent();   
+            InitializeComponent();
+
+            try
+            {
+                Directory.Delete(outputDir);
+            }
+            catch(DirectoryNotFoundException e)
+            {
+                Console.WriteLine("No directory to delete");
+            }
             
-            EmptyDirectory(outputDir);
             Directory.CreateDirectory(outputDir);
 
             elapsedTimeWatch = new Stopwatch();
@@ -36,7 +45,6 @@ namespace camera_demo
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            EmptyDirectory(outputDir);
             videoDevice.Start();
             elapsedTimeWatch.Start();
             fpsWatch.Start();
@@ -108,7 +116,6 @@ namespace camera_demo
             ElapsedTimeBox.Text = elapsedTimeWatch.ElapsedMilliseconds.ToString();
         }
 
-        #region Utility
         private void FrameHandler(object sender, NewFrameEventArgs args)
         {
             // Be careful about using ref vs value of args.Frame, depending
@@ -123,29 +130,5 @@ namespace camera_demo
 
             return;
         }
-
-        private static void EmptyDirectory(string dir)
-        {
-            try
-            {
-                System.IO.DirectoryInfo directory = new System.IO.DirectoryInfo(dir);
-                foreach (System.IO.FileInfo file in directory.EnumerateFiles())
-                {
-                    file.Delete();
-                }
-
-                foreach (System.IO.DirectoryInfo subDirectory in directory.EnumerateDirectories())
-                {
-                    subDirectory.Delete(true);
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error, either invalid directory path or permissions issue");
-            }
-            return;
-        }
-
-        #endregion
     }
 }
